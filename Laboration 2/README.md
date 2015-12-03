@@ -28,10 +28,6 @@ Känslig data bör hashas innan det sparas i databasen. Det finns olika metoder fö
 
 Istället bör man använda sig av en hashmetod som heter BCrypt istället, som i nuläget anses vara det bästa alternativet för att säkra känslig data.
 
-## CSRF
-
-Applikationen är inte skyddad mot CSRF attacker. 
-
 ## HTTPS
 
 Med hjälp av HTTPS så kan man kryptera trafiken mellan klienten och server. Detta görs inte i denna applikation. Angriparen kan bevaka trafiken och på så sätt komma åt cookies från användare[5].
