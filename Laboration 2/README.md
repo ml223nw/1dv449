@@ -17,7 +17,7 @@ Eftersom sessionen inte förstörs när man loggar ut, så är det bara bara att ange
 En XSS brist är när en applikation accepterar data utan att någon ordentlig validering. Det innebär att angriparen kan mata in HTML eller JavaScript skript i formuläret som gör att användaren omdirigeras till en sida med skadlig programvara[1].
 
 I applikationen går det exempelvis att skriva
-<code><a href='#' onclick='alert(document.cookie)'>Click me</a></code> som ett meddelande och när man sen klickar på länken så visas användarens sessioncookie upp i en varningsruta. På så sätt så kan angriparen kapa användaren konto[2].
+`<a href='#' onclick='alert(document.cookie)'>Click me</a>` som ett meddelande och när man sen klickar på länken så visas användarens sessioncookie upp i en varningsruta. På så sätt så kan angriparen kapa användaren konto[2].
 
 ## Hashade lösenord
 
