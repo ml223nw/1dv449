@@ -3,7 +3,7 @@
 
 ## Parametriserade frågor
 
-Variablerna “usename” och “password” i login.js konkateneras direkt in i SQL-frågan. Eftersom detta inte är separerat från användares inmatning så är applikationen öppen för SQL-injections. Det innebär att användaren kan manipulera SQL-frågor som körs i applikationen[1].
+Variablerna “usename” och “password” i login.js konkateneras direkt in i SQL-frågan. Eftersom detta inte är separerat från användares inmatning så är applikationen öppen för SQL-injections. Det innebär att angriparen kan manipulera SQL-frågor som körs i applikationen[1].
 
 Exempelvis så kunde man logga in i applikationen genom att bara lägga till 1=1 i användarnamnet. Det går också att använda ”;DROP TABLE tabellnamn” för att radera tabeller i applikationen. Det kommer inte att vara så svårt eller ta specielt lång tid att räkna ut vad tabellnamnet är (message) för att kunna påverka applikationen på ett förödande sätt[1].
 
@@ -74,7 +74,10 @@ Expiration headern är inställd på ”'-1”. Detta betyder att ingenting sparas i ca
 
 # Reflektion
 
-(kommer snart)
+Laborationen har varit väldigt lärorik. Jag tycker att den har gett mig en klarare bild av vilka svagheter och brister som kan finnas i en webbapplikation.
+Att någonting så oskyldigt som ett vanligt textfält som förväntas att bara vara ett textfält för att skriva text, kan också användas för att förstöra eller stjäla känslig data / information.
+Nu tycker jag att man har större förståelse för hur viktigt det är med säkerhet och varför det alltid är så viktigt att tänka på det som programmerare.
+
 
 # Referenser
 
