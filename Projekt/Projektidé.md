@@ -13,5 +13,5 @@ Klickar man på en ikon så ska man få upp en mer detaljerad information på pr
 
 ### API:er
 
-Google maps.
-OpenWeatherMap.
+* Google maps.
+* OpenWeatherMap.
