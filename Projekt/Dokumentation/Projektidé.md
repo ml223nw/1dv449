@@ -1,17 +1,17 @@
-# Projektidé
+# ProjektidÃ©
 
 ### WeatherAtlas 
 
-Jag ska utveckla en mashup applikation som kombinerar karta + väder funktionallitet.
-En enklare väderprognos ska visas i form av ikoner runt om världskartan.
-Exempelvis, om det regnar i Kalmar så visas en ikon på ett moln med regndroppar.
+Jag ska utveckla en mashup applikation som kombinerar karta + vÃ¤der funktionallitet.
+En enklare vÃ¤derprognos ska visas i form av ikoner runt om vÃ¤rldskartan.
+Exempelvis, om det regnar i Kalmar sÃ¥ visas en ikon pÃ¥ ett moln med regndroppar.
 
-Endast huvudstäder / större platser kommer att visa ikoner när kartan inte är inzoomad.
-För att se väderprognos i mindre städer så krävs det att man zoomar in kartan.
+Endast huvudstÃ¤der / stÃ¶rre platser kommer att visa ikoner nÃ¤r kartan inte Ã¤r inzoomad.
+FÃ¶r att se vÃ¤derprognos i mindre stÃ¤der sÃ¥ krÃ¤vs det att man zoomar in kartan.
 
-Klickar man på en ikon så ska man få upp en mer detaljerad information på prognosen.
+Klickar man pÃ¥ en ikon sÃ¥ ska man fÃ¥ upp en mer detaljerad information pÃ¥ prognosen.
 
 ### API:er
 
-Karta: Google maps
-Väder: OpenWeatherMap
+* Google maps.
+* OpenWeatherMap.
