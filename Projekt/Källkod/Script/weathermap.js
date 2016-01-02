@@ -4,7 +4,7 @@
 var geoJSON;
 var request;
 var getDataFromRequest = false;
-var openWeatherMapApiKey = "2c267276247019f6f2af31301e80e021";
+var openWeatherMapApiKey = "123";
 
 function GetWeather(northLatitude, eastLongitude, southLatitude, westLongitude) {
 
