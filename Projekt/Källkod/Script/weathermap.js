@@ -1,4 +1,5 @@
 "use strict";
+/*global google*/
 /*global map*/
 
 var geoJSON;
@@ -6,10 +7,10 @@ var request;
 var getDataFromRequest = false;
 var openWeatherMapApiKey = "123";
 
-function GetWeather(northLatitude, eastLongitude, southLatitude, westLongitude) {
+function GetWeather(northLat, eastLng, southLat, westLng) {
 
-    getDataFromRequest = true;
-    var requestString = "http://api.openweathermap.org/data/2.5/box/city?bbox=" + northLatitude + "," + eastLongitude + "," + southLatitude + "," + westLongitude + "," + map.getZoom() + "&cluster=yes&format=json" + "&APPID=" + openWeatherMapApiKey;
+    getDataFromRequest = false;
+    var requestString = "http://api.openweathermap.org/data/2.5/box/city?bbox=" + westLng + "," + northLat + "," + eastLng + "," + southLat + "," + map.getZoom() + "&cluster=yes&format=json" + "&APPID=" + openWeatherMapApiKey;
 
     request = new XMLHttpRequest();
     request.onload = JsonResult;
@@ -17,36 +18,74 @@ function GetWeather(northLatitude, eastLongitude, southLatitude, westLongitude) 
     request.send();
 }
 
+function JsonResult() {
+
+    var resultOfJson = JSON.parse(this.responseText);
+
+    if (resultOfJson.list.length > 0) {
+
+        ResetData();
+
+        for (var i = 0; i < resultOfJson.list.length; i++) {
+
+            geoJSON.features.push(JsonToGeoJson(resultOfJson.list[i]));
+        }
+        RenderIcons(geoJSON);
+        }
+    
+    }
+
+function JsonToGeoJson(weatherItem) {
+
+    var feature = {
+
+        type: "Feature",
+        properties: {
+            icon: "http://openweathermap.org/img/w/" + weatherItem.weather[0].icon + ".png",
+            coordinates: [weatherItem.coord.lon, weatherItem.coord.lat]
+        },
+        geometry: {
+            type: "Point",
+            coordinates: [weatherItem.coord.lon, weatherItem.coord.lat]
+        }
+    
+    };
+    
+    map.data.setStyle(function(feature) {
+
+        return {
+            icon: { url: feature.getProperty('icon'), anchor: new google.maps.Point(25, 25) }
+            
+            };
+    
+        });
+        return feature;
+    }
+
+
 function CheckIfDataHasBeenRequested() {
 
-    while (getDataFromRequest === true) {
+    if (getDataFromRequest == true) {
 
         request.abort();
-        console.log("DATA REQUEST ABORTED")
+        console.log("DATA REQUEST ABORTED");
         getDataFromRequest = false;
     }
     GetCoordinates();
-}
+    }
 
 function GetCoordinates() {
 
     var bounds = map.getBounds();
     var northEast = bounds.getNorthEast();
-    var soutWest = bounds.getSouthWest();
-
-    GetWeather(northEast.lat(), northEast.lng(), soutWest.lat(), soutWest.lng());
-}
-
-function JsonResult() {
-
-    console.log(this);
-    var results = JSON.parse(this.responseText);
-
-    if (results.list.length > 0) {
-        ResetData();
-        console.log(geoJSON);
+    var southWest = bounds.getSouthWest();
+    GetWeather(northEast.lat(), northEast.lng(), southWest.lat(), southWest.lng());
     }
 
+function RenderIcons(weather) {
+
+    map.data.addGeoJson(geoJSON);
+    getDataFromRequest = false;
 }
 
 function ResetData() {
