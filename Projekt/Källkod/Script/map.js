@@ -10,6 +10,7 @@ function Initialize() {
     var mapProperties = {
         center: new google.maps.LatLng(60.128161, 18.643501),
         zoom: 5,
+        minZoom: 3,
         disableDefaultUI: true,
         zoomControl: true,
         mapTypeId: google.maps.MapTypeId.HYBRID

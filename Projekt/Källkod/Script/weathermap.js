@@ -23,11 +23,9 @@ function JsonResult() {
     var resultOfJson = JSON.parse(this.responseText);
 
     if (resultOfJson.list.length > 0) {
-
         ResetData();
 
         for (var i = 0; i < resultOfJson.list.length; i++) {
-
             geoJSON.features.push(JsonToGeoJson(resultOfJson.list[i]));
         }
         RenderIcons(geoJSON);
@@ -66,7 +64,6 @@ function JsonToGeoJson(weatherItem) {
 function CheckIfDataHasBeenRequested() {
 
     if (getDataFromRequest == true) {
-
         request.abort();
         console.log("DATA REQUEST ABORTED");
         getDataFromRequest = false;
@@ -80,7 +77,7 @@ function GetCoordinates() {
     var northEast = bounds.getNorthEast();
     var southWest = bounds.getSouthWest();
     GetWeather(northEast.lat(), northEast.lng(), southWest.lat(), southWest.lng());
-    }
+}
 
 function RenderIcons(weather) {
 
@@ -94,6 +91,9 @@ function ResetData() {
         type: "FeatureCollection",
         features: []
     };
+        map.data.forEach(function(feature) {
+        map.data.remove(feature);
+    });
 
 }
 
