@@ -39,6 +39,9 @@ function JsonToGeoJson(weatherItem) {
 
         type: "Feature",
         properties: {
+            city: weatherItem.name,
+            weather: weatherItem.weather[0].main,
+            temperature: weatherItem.main.temp,
             icon: "http://openweathermap.org/img/w/" + weatherItem.weather[0].icon + ".png",
             coordinates: [weatherItem.coord.lon, weatherItem.coord.lat]
         },
@@ -64,10 +67,11 @@ function JsonToGeoJson(weatherItem) {
 function CheckIfDataHasBeenRequested() {
 
     if (getDataFromRequest == true) {
+        
         request.abort();
         console.log("DATA REQUEST ABORTED");
         getDataFromRequest = false;
-    }
+        }
     GetCoordinates();
     }
 
